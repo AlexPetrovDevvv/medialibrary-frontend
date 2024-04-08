@@ -24,7 +24,7 @@ instance.interceptors.request.use( (config: any) => {
         config.headers['Content-Type'] = "application/json"
     }
     return config
-}, (error: any) => {})
+}, () => {})
 
 instance.interceptors.response.use( (config: any) => {
     return config
