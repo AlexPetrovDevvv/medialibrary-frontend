@@ -1,3 +1,4 @@
+import { togglePreloader } from "@/entities/preloader";
 import { createVideoShema, updateVideoShema } from "../shemas/videoShemas";
 import { useVideoList } from "../store/store";
 import { IVideosDelete, IVideosUpdate, IVideosUpload } from "../types/types";
@@ -10,12 +11,14 @@ async function  createVideo(data: IVideosUpload & FormData) {
     for (var key of data.keys()) {
         formJSON[key] = data.get(key);
     }
+    togglePreloader(true)
     try {
         await createVideoShema.validate(formJSON, { abortEarly: false })
         return await videoStore.createVideo(data)
+
     }
     catch(err: any) {
-        console.log(err.inner)
+        togglePreloader(false)
         // @tse-ignore
         err.inner.forEach((error: any) => {
         // @ts-ignore

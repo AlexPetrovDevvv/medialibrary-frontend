@@ -6,11 +6,12 @@
         </transition>
     </router-view>
     <Toast/>
+    <Preloader/>
 </template>
 
 <script setup lang="ts">
 import { Toast } from '@/entities/toast'
-
+import { Preloader } from '@/entities/preloader';
 </script>
 
 <style lang="sass">

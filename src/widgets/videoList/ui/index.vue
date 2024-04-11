@@ -12,31 +12,21 @@
                 <td>
                     {{ item.name }}
                 </td>
-                <td class="d-flex justify-space-between align-center">
+                <td >
                     {{ item.url }}
+                </td>
+                <td class="d-flex align-center">
                     <v-btn density="comfortable" variant="text" icon @click="copyUrl(item.url)">
                         <v-icon>
                             mdi-content-copy
                         </v-icon>
-                    </v-btn>
-                </td>
-                <td>
-                    <button-menu density="comfortable" icon="mdi-dots-vertical" location="right top">
-                        <template #list>
-                            <v-list>
-                                <v-list-item class="d-flex justify-center">
-                                    <template v-slot:append>
-                                        <delete-videos @confirm="deleteVideo({ id: item._id })"/>
-                                    </template>
-                                </v-list-item>
-                                <v-list-item class="d-flex justify-center">
-                                    <template v-slot:append>
-                                        <update-videos @confirm="(element) => update(element, item._id)"/>
-                                    </template>
-                                </v-list-item>
-                            </v-list>
-                        </template>
-                    </button-menu>
+                        <v-tooltip
+                            activator="parent"
+                            location="bottom"
+                            >Копировать ссылку</v-tooltip>
+                        </v-btn>
+                        <update-videos class="ml-2" @confirm="(element) => update(element, item._id)"/>
+                        <delete-videos class="ml-2" @confirm="deleteVideo({ id: item._id })"/>
                 </td>
             </tr>
         </template>
@@ -46,7 +36,6 @@
 <script setup lang="ts">
 import { TableContainer } from '@/entities/table';
 import { useVideoList } from '../lib/store/store';
-import { ButtonMenu } from '@/entities/buttonMenu';
 import { deleteVideos } from '@/features/videos/deleteVideos';
 import { updateVideos } from '@/features/videos/updateVideos';
 import { getToast } from '@/entities/toast';

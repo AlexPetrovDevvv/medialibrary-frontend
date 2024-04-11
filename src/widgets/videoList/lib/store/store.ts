@@ -3,6 +3,7 @@ import { defineStore } from "pinia"
 import { onMounted, ref} from "vue"
 import { IVIdeo, IVideosDelete, IVideosUpdate, IVideosUpload } from "../types/types"
 import axios from "../api/index"
+import { togglePreloader } from "@/entities/preloader"
 
 export const useVideoList = defineStore('videoList', () => {
     const videoList = ref<IVIdeo[] | []>([])
@@ -14,8 +15,10 @@ export const useVideoList = defineStore('videoList', () => {
             const data: IVIdeo = res.data
             //@ts-ignore
             videoList.value.push(data)
+            togglePreloader(false)
             getToast('success', "Видео успешно загруженo")
         } catch (err: any) {
+            togglePreloader(false)
             getToast('error', err.response.data.message)
         }
     }

@@ -2,13 +2,13 @@
     <Popup v-model="isOpen" @open="open" @close="close" buttonName="Удалить пользователя" color="error">
         <template #content>
             <v-card width="600" class="px-8 py-8">
-                <v-card-title class="text-h4 pa-0">Вы точно хотите удалить пользователя?</v-card-title>
+                <v-card-title class="text-h5 pa-0">Вы точно хотите удалить пользователя?</v-card-title>
                 <v-card-actions class="mt-8 px-0 py-0">
-                    <v-btn @click="confirm" size="large" variant="flat" color="error">
+                    <v-btn @click="confirm" class="py-2 px-4 text-button" size="medium" variant="flat" color="error">
                         Да
                     </v-btn>
 
-                    <v-btn @click="close" class="ml-4" size="large" variant="flat" color="success">
+                    <v-btn @click="close" class="ml-4 py-2 px-4 text-button" size="medium" variant="flat" color="success">
                         Нет
                     </v-btn>
                 </v-card-actions>

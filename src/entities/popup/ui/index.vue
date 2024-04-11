@@ -2,11 +2,18 @@
     <v-btn
         :color="color"
         :variant="variant"
+        :density="density"
+        :icon="icon"
         class="text-none"
         @click.stop="open"
     >
         {{ buttonName }}
-
+        <v-icon v-if="iconLink" > {{ iconLink }} </v-icon>
+        <v-tooltip
+            v-if="tooltipName"
+            activator="parent"
+            location="bottom"
+        >{{ tooltipName }}</v-tooltip>
         <v-overlay
           v-model="isOpen"
           scroll-strategy="block"
@@ -19,12 +26,11 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
-import { Variant } from '../lib/types/types';
+import { Variant, Density } from '../lib/types/types';
 
 defineProps({
     buttonName: {
-        type: String,
-        required: true
+        type: String
     },
     color: {
         type: String,
@@ -34,6 +40,20 @@ defineProps({
         type: String as PropType<Variant>,
         default: "text"
     },
+    iconLink: {
+        type: String,
+    },
+    icon: {
+        type: Boolean,
+        default: false
+    },
+    tooltipName: {
+        type: String
+    },
+    density: {
+        type: String as PropType<Density>,
+        default: "default"
+    }
 })
 
 const isOpen = defineModel<boolean | undefined>()

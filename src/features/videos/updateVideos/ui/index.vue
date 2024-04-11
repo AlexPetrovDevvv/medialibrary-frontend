@@ -1,5 +1,5 @@
 <template>
-  <Popup v-model="isOpen" @open="open" @close="close" buttonName="Обновить видео" color="primary" variant="text" class="create-videos">
+  <Popup v-model="isOpen" @open="open" @close="close" :icon="true" iconLink="mdi-update" tooltipName="Обновить видео" density="comfortable" class="create-videos">
     <template #content>
         <v-card width="600" class="create-videos__card px-8 py-8">
           <v-card-title class="text-h4 create-videos__title pa-0">Загрузить видео</v-card-title>

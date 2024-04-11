@@ -15,7 +15,6 @@ export const useUserList = defineStore('userList', () => {
             const data: IUser = res.data._doc
             //@ts-ignore
             userList.value.push(data)
-            console.log(userList.value)
             getToast('success', "Пользователь успешно создан")
         } catch (err: any) {
             getToast('error', err.response.data.message)
