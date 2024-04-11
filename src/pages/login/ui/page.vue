@@ -11,7 +11,7 @@
                         :rules="[required]"
                         label="Логин"
                         variant="underlined"
-                        autocomplete="username"
+                        autocomplete=""
                         hide-details
                         required
                       ></v-text-field>
