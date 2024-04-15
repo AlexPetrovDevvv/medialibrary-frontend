@@ -13,23 +13,12 @@
             <Transition>
                 <create-user v-if="route.path === '/users'" @confirm="item => userHook(item)"/>
             </Transition>
-            <button-menu variant="text" icon="mdi-dots-vertical" location="right top">
-                <template #list>
-                    <v-list>
-                        <v-list-item class="d-flex justify-center">
-                            <template v-slot:append>
-                                <loggout-button/>
-                            </template>
-                        </v-list-item>
-                    </v-list>
-                </template>
-            </button-menu>
+            <loggout-button class="ml-6"/>
         </template>
     </header-layout>
 </template>
 
 <script setup lang="ts">
-import { ButtonMenu } from '@/entities/buttonMenu';
 import { HeaderLayout } from '@/entities/header';
 import { createVideos } from '@/features/videos/createVideos';
 import { CreateUser } from '@/features/users/createUser';
